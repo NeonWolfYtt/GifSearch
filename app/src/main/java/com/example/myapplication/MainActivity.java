@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        statusBarColor();
         progressBar = findViewById(R.id.progressLoadingBar);
         recyclerView = findViewById(R.id.gifList);
         editText = findViewById(R.id.textInputField);
@@ -112,7 +113,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void statusBarColor(){
+        if(Build.VERSION.SDK_INT >=Build.VERSION_CODES.M){
+            getWindow().setStatusBarColor((getResources().getColor(R.color.dark_blue,this.getTheme())));
+        } else if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor((getResources().getColor(R.color.dark_blue)));
+        }
+    }
     public void request(String searchText, Boolean isRefreshing) {
         String apiKey = "uNmVu4lbmD2R4C3bFPNk2yE3Jj07Kk6d";
         String url = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey +
