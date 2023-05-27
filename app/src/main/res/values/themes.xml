@@ -7,7 +7,9 @@
 
     <style name="TEXTVIEW_BACKGROUND">
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:background">#000000</item>
+        <item name="android:background">#010019</item>
+        <item name="android:statusBarColor">#010019</item>
     </style>
+
 
 </resources>
